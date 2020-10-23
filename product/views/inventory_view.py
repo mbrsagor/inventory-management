@@ -14,3 +14,10 @@ class CreateInventoryView(SuccessMessageMixin, CreateView):
     form_class = InventoryForm
     success_message = "Inventory successfully created!"
     success_url = '/config/create-inventory/'
+
+
+class InventoryListView(ListView):
+    template_name = 'inventory/inventory_list.html'
+    model = Inventory
+    context_object_name = 'inventory'
+    paginate_by = 10
