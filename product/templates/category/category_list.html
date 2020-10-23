@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Category List {% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1> Dashboard <small>Category List page</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Category-List</li>
+        </ol>
+    </section>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Category List</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        {% if category %}
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Sub Category</th>
+                                    <th>Parent Category</th>
+                                    <th>Is Active</th>
+                                    <th>Created At</th>
+                                    <th>Image</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                {% for cat in category %}
+                                    <tr>
+                                        <td>{{ cat.id }}</td>
+                                        <td>{{ cat.name }}</td>
+                                        <td>{{ cat.parent }}</td>
+                                        <td>{% if cat.is_active == 1 %}
+                                            <span class="badge bg-green">Active</span> {% else %}
+                                            <span class="badge bg-red">Deactivated</span> {% endif %}</td>
+                                        <td>{{ cat.created_at }}</td>
+                                        <td>
+                                            {% if not cat.category_image %}
+                                                <div class="image_not_found"><i class="fa fa-desktop"></i></div>
+                                            {% else %}
+                                                <img width="40px" height="15" src="/media/{{ cat.category_image }}"
+                                                     alt="category image">
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn btn-info btn-sm" href=""><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href=""><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <h2>Category not added yet</h2>
+                        {% endif %}
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .image_not_found i {
+            font-size: 30px;
+        }
+    </style>
+
+{% endblock %}

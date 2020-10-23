@@ -1,4 +1,4 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -15,3 +15,10 @@ class CategoryCreateView(SuccessMessageMixin, CreateView):
     model = Category
     form_class = CategoryForm
     success_url = '/config/create-category/'
+
+
+class CategoryListView(ListView):
+    template_name = 'category/category_list.html'
+    model = Category
+    context_object_name = 'category'
+    paginate_by = 10

@@ -5,14 +5,12 @@
 {% block content %}
 
     <section class="content-header">
-        <h1> Dashboard <small>Control panel</small></h1>
+        <h1> Dashboard <small>Add new Category</small></h1>
         <ol class="breadcrumb">
-            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Category</li>
         </ol>
     </section>
-
-    {% include 'common/message.html' %}
 
     <div class="content">
         <div class="row">
@@ -21,15 +19,59 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Add New Category</h3>
                     </div>
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form }}
-                        <button class="btn btn-success" type="submit">Save</button>
-                    </form>
+                    <div class="box-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="name">Category Name</label>
+                                        {{ form.name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Parent Category</label>
+                                        {{ form.parent }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="imageUpload">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            {{ form.category_image }}
+                                            <label class="custom-file-label" for="imageUpload">Category Image</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Is Active</label>
+                                        {{ form.is_active }}
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success" type="submit">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right">
+                {% if messages %}
+                    <div class="category_message">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {% for m in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
-
-
 {% endblock %}
