@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from django.contrib.messages import constants as messages
 
 from config.db_config import DATABASES
 
@@ -114,6 +115,13 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Django Message Framework
+MESSAGE_TAGS = {
+    messages.INFO: 'SUCCESS',
+    messages.ERROR: 'ERROR',
+    messages.WARNING: 'WARNING'
+}
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
