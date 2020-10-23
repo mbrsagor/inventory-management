@@ -26,7 +26,6 @@
                             <table class="table table-bordered">
                                 <tbody>
                                 <tr>
-                                    <th style="width: 10px">#</th>
                                     <th>Sub Category</th>
                                     <th>Parent Category</th>
                                     <th>Is Active</th>
@@ -36,7 +35,6 @@
                                 </tr>
                                 {% for cat in category %}
                                     <tr>
-                                        <td>{{ cat.id }}</td>
                                         <td>{{ cat.name }}</td>
                                         <td>{% if not cat.parent %} <-> {% else %} {{ cat.parent }} {% endif %}</td>
                                         <td>{% if cat.is_active == 1 %}
@@ -52,8 +50,8 @@
                                             {% endif %}
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-info btn-sm" href=""><i class="fa fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-sm" href=""><i class="fa fa-trash"></i></a>
+                                            <a class="btn btn-info btn-sm" href="{% url 'category_update' cat.id %}"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="{% url 'category_delete' cat.id %}"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

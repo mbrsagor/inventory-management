@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -22,3 +22,17 @@ class CategoryListView(ListView):
     model = Category
     context_object_name = 'category'
     paginate_by = 10
+
+
+class CategoryUpdateView(UpdateView):
+    template_name = 'category/create_category.html'
+    model = Category
+    form_class = CategoryForm
+    success_url = '/config/category/'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CategoryDeleteView(DeleteView):
+    template_name = 'category/category_confirm_delete.html'
+    model = Category
+    success_url = '/config/category/'
