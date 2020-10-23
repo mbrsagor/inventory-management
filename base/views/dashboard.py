@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 
 
 class Dashboard(TemplateView):
-    template_name = 'index.html'
+    template_name = 'dashboard/dashboard.html'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
