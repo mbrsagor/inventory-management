@@ -13,6 +13,3 @@ class Category(BaseEntity):
 
     def get_children(self):
         return Category.objects.filter(parent=self)
-
-    def children_count(self):
-        return Category.objects.filter(parent=self).count()
