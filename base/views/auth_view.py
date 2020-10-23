@@ -27,7 +27,7 @@ class UserLoginView(LoginView):
         return super(UserLoginView, self).form_valid(form)
 
 
-# Login view
+# Logout view
 class LogoutView(View):
 
     def get(self, request):
