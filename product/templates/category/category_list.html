@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block title %} Category List {% endblock %}
@@ -39,7 +38,7 @@
                                     <tr>
                                         <td>{{ cat.id }}</td>
                                         <td>{{ cat.name }}</td>
-                                        <td>{{ cat.parent }}</td>
+                                        <td>{% if not cat.parent %} <-> {% else %} {{ cat.parent }} {% endif %}</td>
                                         <td>{% if cat.is_active == 1 %}
                                             <span class="badge bg-green">Active</span> {% else %}
                                             <span class="badge bg-red">Deactivated</span> {% endif %}</td>
@@ -60,29 +59,16 @@
                                 {% endfor %}
                                 </tbody>
                             </table>
-                            {% else %}
+                        {% else %}
                             <h2>Category not added yet</h2>
                         {% endif %}
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">«</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">»</a></li>
-                        </ul>
+                        {% include 'category/pagination.html' %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <style>
-        .image_not_found i {
-            font-size: 30px;
-        }
-    </style>
-
 {% endblock %}

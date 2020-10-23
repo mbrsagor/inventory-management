@@ -1,7 +1,6 @@
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.messages.views import SuccessMessageMixin
 
 from product.models.category import Category
@@ -17,6 +16,7 @@ class CategoryCreateView(SuccessMessageMixin, CreateView):
     success_url = '/config/create-category/'
 
 
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
 class CategoryListView(ListView):
     template_name = 'category/category_list.html'
     model = Category
