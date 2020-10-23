@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Add New Inventory || Inventory {% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button class="btn btn-success btn-sm">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
