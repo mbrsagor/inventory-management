@@ -4,15 +4,73 @@
 
 {% block content %}
 
+    <section class="content-header">
+        <h1> Dashboard <small>Add new Inventory</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Inventory</li>
+        </ol>
+    </section>
+
     <div class="content">
         <div class="row">
             <div class="col-lg-12">
-                <div class="box">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form }}
-                        <button class="btn btn-success btn-sm">Save</button>
-                    </form>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add New Inventory</h3>
+                    </div>
+                    <div class="box-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="name">Inventory Name</label>
+                                        {{ form.name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category_name">Select Category</label>
+                                        {{ form.category_name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="short_description">Inventory short description</label>
+                                        {{ form.short_description }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="current_stock">Inventory current stock</label>
+                                        {{ form.current_stock }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="purchase_price">Inventory purchase price</label>
+                                        {{ form.purchase_price }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sales_price">Inventory sales price</label>
+                                        {{ form.sales_price }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sales_price">Inventory promotional price</label>
+                                        {{ form.promotional_price }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="picture">Inventory picture</label>
+                                        {{ form.picture }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="full_description">Inventory full description</label>
+                                        {{ form.full_description }}
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success btn-sm">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
