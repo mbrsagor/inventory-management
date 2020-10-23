@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ inventory.name }} Detail || Inventory {% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1> Dashboard <small>{{ inventory.name }} detail page</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">detail</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ inventory.name }} Spesification</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
+                        <i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
+                            title="Remove">
+                        <i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="inventory_image">
+                            {% if not inventory.picture %}
+                                <img class="img-responsive" src="{% static 'dist/img/photo1.png' %}"
+                                     alt="Inventory picture">
+                            {% else %}
+                                <img class="img-responsive" src="/media/{{ inventory.picture }}"
+                                     alt="Inventory picture">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="inventory_info">
+                            <ul class="list-group list-group-unbordered">
+                                <li class="list-group-item">
+                                    <b>Inventory current stock</b> <a
+                                        class="pull-right">Total {{ inventory.current_stock }} Items</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Inventory Category Name</b> <a
+                                        class="pull-right">{{ inventory.category_name }}</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Inventory purchase price</b> <a
+                                        class="pull-right">BDT {{ inventory.purchase_price }} only</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Inventory purchase price</b> <a
+                                        class="pull-right">BDT {{ inventory.purchase_price }} only</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Inventory sales price</b> <a
+                                        class="pull-right">BDT {{ inventory.sales_price }} only</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Inventory promotional price</b> <a
+                                        class="pull-right">BDT {{ inventory.promotional_price }} only</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="well">
+                        <p><b>About {{ inventory.name }} shot description: </b>{{ inventory.short_description }}</p>
+                        <hr/>
+                        <p>{{ inventory.full_description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.box -->
+    </section>
+
+{% endblock %}

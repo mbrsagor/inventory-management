@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -16,8 +16,16 @@ class CreateInventoryView(SuccessMessageMixin, CreateView):
     success_url = '/config/create-inventory/'
 
 
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
 class InventoryListView(ListView):
     template_name = 'inventory/inventory_list.html'
     model = Inventory
     context_object_name = 'inventory'
     paginate_by = 10
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class InventoryDetailView(DetailView):
+    template_name = 'inventory/inventory_details.html'
+    model = Inventory
+    context_object_name = 'inventory'
