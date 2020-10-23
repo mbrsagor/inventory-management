@@ -55,7 +55,6 @@
                             <li class="user-header">
                                 <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle"
                                      alt="User Image">
-
                                 <p>Software Engineer </p>
                             </li>
                             <!-- Menu Footer-->
@@ -64,7 +63,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{% url 'logout' %}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
