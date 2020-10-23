@@ -1,6 +1,7 @@
 from django.urls import path
 from product.views.category_view import CategoryCreateView, CategoryListView, CategoryUpdateView, CategoryDeleteView
-from product.views.inventory_view import CreateInventoryView, InventoryListView, InventoryDetailView
+from product.views.inventory_view import CreateInventoryView, InventoryListView, InventoryDetailView, \
+    InventoryUpdateView, InventoryDeleteView
 
 urlpatterns = [
     path('create-category/', CategoryCreateView.as_view(), name='create_category'),
@@ -10,4 +11,6 @@ urlpatterns = [
     path('create-inventory/', CreateInventoryView.as_view(), name='inventory_create'),
     path('inventory/', InventoryListView.as_view(), name='inventory_list'),
     path('inventory/<pk>/', InventoryDetailView.as_view(), name='inventory_detail'),
+    path('inventory-update/<pk>/', InventoryUpdateView.as_view(), name='inventory_update'),
+    path('inventory-delete/<pk>/', InventoryDeleteView.as_view(), name='inventory_delete'),
 ]

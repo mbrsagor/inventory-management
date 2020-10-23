@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ object }} confirm delete {% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="row text-center">
+            <div class="col-lg-6 col-lg-offset-3 text-center mt-5">
+                <div class="box">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="card pt-3">
+                            <div class="card-header">
+                                <h5 class="card-title">Are you sure will you want to delete "{{ object }}"?</h5>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-danger btn-sm" type="submit">Yes</button>
+                                <a href="{% url 'inventory_list' %}" class="btn btn-warning btn-sm  text-light">No</a>
+                            </div>
+                        </div>
+                    </form>
+                    <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

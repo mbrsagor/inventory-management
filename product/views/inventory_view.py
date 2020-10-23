@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -29,3 +29,16 @@ class InventoryDetailView(DetailView):
     template_name = 'inventory/inventory_details.html'
     model = Inventory
     context_object_name = 'inventory'
+
+
+class InventoryUpdateView(UpdateView):
+    template_name = 'inventory/create_inventory.html'
+    model = Inventory
+    form_class = InventoryForm
+    success_url = '/config/inventory/'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class InventoryDeleteView(DeleteView):
+    template_name = 'inventory/inventory_confirm_delete.html'
+    model = Inventory

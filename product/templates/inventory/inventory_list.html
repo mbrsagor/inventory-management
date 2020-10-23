@@ -48,10 +48,10 @@
                                         <td class="text-center">
                                             <a class="btn btn-info btn-sm" href="{% url 'inventory_detail' obj.pk %}"><i
                                                     class="fa fa-eye"></i></a>
-                                            <a class="btn btn-info btn-sm" href="#"><i
+                                            <a class="btn btn-info btn-sm" href="{% url 'inventory_update' obj.pk %}"><i
                                                     class="fa fa-pencil"></i></a>
                                             <a class="btn btn-danger btn-sm"
-                                               href="#"><i class="fa fa-trash"></i></a>
+                                               href="{% url 'inventory_delete' obj.pk %}"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}
