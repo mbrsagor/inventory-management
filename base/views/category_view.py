@@ -13,7 +13,7 @@ class CategoryCreateView(SuccessMessageMixin, CreateView):
     success_message = "Category successfully created!"
     model = Category
     form_class = CategoryForm
-    success_url = '/config/create-category/'
+    success_url = '/create-category/'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -28,11 +28,11 @@ class CategoryUpdateView(UpdateView):
     template_name = 'category/create_category.html'
     model = Category
     form_class = CategoryForm
-    success_url = '/config/category/'
+    success_url = '/category/'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class CategoryDeleteView(DeleteView):
     template_name = 'category/category_confirm_delete.html'
     model = Category
-    success_url = '/config/category/'
+    success_url = '/category/'
