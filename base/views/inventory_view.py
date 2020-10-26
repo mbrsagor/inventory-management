@@ -13,7 +13,7 @@ class CreateInventoryView(SuccessMessageMixin, CreateView):
     model = Inventory
     form_class = InventoryForm
     success_message = "Inventory successfully created!"
-    success_url = '/config/create-inventory/'
+    success_url = '/create-inventory/'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -35,7 +35,7 @@ class InventoryUpdateView(UpdateView):
     template_name = 'inventory/create_inventory.html'
     model = Inventory
     form_class = InventoryForm
-    success_url = '/config/inventory/'
+    success_url = '/inventory/'
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
