@@ -5,7 +5,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventory',
+        'NAME': 'inventory_db',
         'USER': 'macair',
         'PASSWORD': 'inventory',
         'HOST': '127.0.0.1',
