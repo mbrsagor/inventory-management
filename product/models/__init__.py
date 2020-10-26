@@ -1,7 +1,7 @@
 from base.models.base import BaseEntity
-from product.models.category import Category
-from product.models.tag import Tag
-from product.models.inventory import Inventory
+from base.models.category import Category
+from base.models.tag import Tag
+from base.models.inventory import Inventory
 
 __author__ = 'Sagor'
 

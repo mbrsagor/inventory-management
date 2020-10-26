@@ -1,7 +1,13 @@
 from base.models.base import BaseEntity
+from base.models.category import Category
+from base.models.inventory import Inventory
+from base.models.tag import Tag
 
 __author__ = 'Sagor'
 
 __all__ = [
-    'BaseEntity'
+    'BaseEntity',
+    'Category',
+    'Inventory',
+    'Tag',
 ]

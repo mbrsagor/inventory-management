@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import TextInput, Select, FileInput, NumberInput, Textarea
 
-from product.models.inventory import Inventory
+from base.models.inventory import Inventory
 
 
 class InventoryForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import TextInput, Select, FileInput, CheckboxInput
-from product.models.category import Category
+from base.models.category import Category
 
 
 class CategoryForm(forms.ModelForm):

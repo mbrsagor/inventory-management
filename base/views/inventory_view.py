@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
-from product.models.inventory import Inventory
+from base.models.inventory import Inventory
 from product.forms.inventory_form import InventoryForm
 
 

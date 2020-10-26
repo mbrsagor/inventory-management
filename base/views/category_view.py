@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
-from product.models.category import Category
+from base.models.category import Category
 from product.forms.category_form import CategoryForm
 
 
