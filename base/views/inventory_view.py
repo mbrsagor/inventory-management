@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
 from base.models.inventory import Inventory
-from product.forms.inventory_form import InventoryForm
+from base.forms.inventory_form import InventoryForm
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')

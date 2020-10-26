@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
 from base.models.category import Category
-from product.forms.category_form import CategoryForm
+from base.forms.category_form import CategoryForm
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
