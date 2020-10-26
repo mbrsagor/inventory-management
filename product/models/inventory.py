@@ -2,6 +2,7 @@ from django.db import models
 
 from base.models.base import BaseEntity
 from product.models.category import Category
+from product.models.tag import Tag
 
 
 class Inventory(BaseEntity):
@@ -13,6 +14,7 @@ class Inventory(BaseEntity):
     purchase_price = models.IntegerField(default=0)
     sales_price = models.IntegerField(default=0)
     promotional_price = models.IntegerField(default=0)
+    tags = models.ManyToManyField(Tag, blank=True, related_name='inventory_tag')
     picture = models.ImageField(upload_to='inventory/%Y/%m/%d', null=True, blank=True)
 
     def __str__(self):

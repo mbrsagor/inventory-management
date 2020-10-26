@@ -42,17 +42,27 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="purchase_price">Inventory purchase price</label>
-                                        {{ form.purchase_price }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sales_price">Inventory sales price</label>
-                                        {{ form.sales_price }}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="purchase_price">Inventory purchase price</label>
+                                                {{ form.purchase_price }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="sales_price">Inventory sales price</label>
+                                                {{ form.sales_price }}
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="sales_price">Inventory promotional price</label>
                                         {{ form.promotional_price }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sales_price">Add Inventory Tag</label>
+                                        {{ form.tags }}
                                     </div>
                                     <div class="form-group">
                                         <label for="picture">Inventory picture</label>
