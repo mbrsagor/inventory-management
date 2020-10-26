@@ -31,3 +31,18 @@ class CreateListTagView(SuccessMessageMixin, CreateView, ListView):
             tag = paginator.page(paginator.num_pages)
         context['tag'] = tag
         return context
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class UpdateTagView(UpdateView):
+    template_name = 'tag/tag_list.html'
+    model = Tag
+    form_class = TagForm
+    success_url = '/tag/'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class TagDeleteView(DeleteView):
+    template_name = 'tag/tag_confirm_delete.html'
+    model = Tag
+    success_url = '/tag/'
