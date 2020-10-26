@@ -4,6 +4,7 @@ from base.views.auth_view import UserLoginView, LogoutView
 from base.views.category_view import CategoryCreateView, CategoryListView, CategoryUpdateView, CategoryDeleteView
 from base.views.inventory_view import CreateInventoryView, InventoryListView, InventoryDetailView, \
     InventoryUpdateView, InventoryDeleteView
+from base.views.tag_view import CreateListTagView
 
 urlpatterns = [
     path('', UserLoginView.as_view(), name='login'),
@@ -18,4 +19,5 @@ urlpatterns = [
     path('inventory/<pk>/', InventoryDetailView.as_view(), name='inventory_detail'),
     path('inventory-update/<pk>/', InventoryUpdateView.as_view(), name='inventory_update'),
     path('inventory-delete/<pk>/', InventoryDeleteView.as_view(), name='inventory_delete'),
+    path('tag/', CreateListTagView.as_view(), name='create_list_tag'),
 ]

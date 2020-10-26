@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tag List {% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1> Dashboard <small>Tag List page</small></h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Tag-List</li>
+        </ol>
+    </section>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tag List</h3>
+                        <button type="button" data-backdrop="static" data-keyboard="false"
+                                class="btn btn-primary btn-sm"
+                                data-toggle="modal" data-target="#modal-primary"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        {% if tag %}
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>Tag Name</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                                {% for obj in tag %}
+                                    <tr>
+                                        <td>{{ obj.name }}</td>
+                                        <td>{{ obj.created_at }}</td>
+                                        <td>{{ obj.update_at }}</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-info btn-sm" href=""><i
+                                                    class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm"
+                                               href=""><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <h2>Tag not added yet</h2>
+                        {% endif %}
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        {% include 'category/pagination.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'tag/modal.html' %}
+
+{% endblock %}
