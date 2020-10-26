@@ -67,6 +67,10 @@
                                     <b>Inventory promotional price</b> <a
                                         class="pull-right">BDT {{ inventory.promotional_price }} only</a>
                                 </li>
+                                <li class="list-group-item">
+                                    <b>Inventory Tags</b> <a
+                                        class="pull-right">{% for tag in inventory.tags.all %} {{ tag.name }} {% endfor %}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
