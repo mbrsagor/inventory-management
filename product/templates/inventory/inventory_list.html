@@ -37,14 +37,14 @@
                                 </tr>
                                 {% for obj in inventory %}
                                     <tr>
-                                        <td>{{ obj.name }}</td>
+                                        <td>{{ obj.name|truncatechars:50 }}</td>
                                         <td>{{ obj.category_name }}</td>
                                         <td>{{ obj.current_stock }}</td>
                                         <td>{{ obj.purchase_price }}</td>
                                         <td>{{ obj.sales_price }}</td>
                                         <td>{{ obj.promotional_price }}</td>
-                                        <td>{{ obj.created_at }}</td>
-                                        <td>{{ obj.update_at }}</td>
+                                        <td>{{ obj.created_at|time:'g:i:s, a' }}</td>
+                                        <td>{{ obj.update_at|time:'g:i:s, a' }}</td>
                                         <td class="text-center">
                                             <a class="btn btn-info btn-sm" href="{% url 'inventory_detail' obj.pk %}"><i
                                                     class="fa fa-eye"></i></a>
