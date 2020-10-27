@@ -1,0 +1,42 @@
+<div class="box-body">
+    {% if inventory %}
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th>Inventory Name</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Purchase price</th>
+                <th>Sales price</th>
+                <th>Promotional price</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            {% for obj in inventory %}
+                <tr>
+                    <td>{{ obj.name|truncatechars:55 }}</td>
+                    <td>{{ obj.category_name }}</td>
+                    <td>{{ obj.current_stock }} PCS</td>
+                    <td>BDT {{ obj.purchase_price }}</td>
+                    <td>BDT {{ obj.sales_price }}</td>
+                    <td>BDT {{ obj.promotional_price }}</td>
+                    <td>{{ obj.created_at|time:'g:i:s A' }}</td>
+                    <td>{{ obj.update_at|time:'g:i:s A' }}</td>
+                    <td class="text-center">
+                        <a class="btn btn-info btn-sm" href="{% url 'inventory_detail' obj.pk %}"><i
+                                class="fa fa-eye"></i></a>
+                        <a class="btn btn-info btn-sm" href="{% url 'inventory_update' obj.pk %}"><i
+                                class="fa fa-pencil"></i></a>
+                        <a class="btn btn-danger btn-sm"
+                           href="{% url 'inventory_delete' obj.pk %}"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No Inventory added yet</h2>
+    {% endif %}
+</div>
+<!-- /.box-body -->
