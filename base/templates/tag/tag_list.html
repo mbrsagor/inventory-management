@@ -30,37 +30,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        {% if tag %}
-                            <table class="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>Tag Name</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                                {% for obj in tag %}
-                                    <tr>
-                                        <td>{{ obj.name }}</td>
-                                        <td>{{ obj.created_at }}</td>
-                                        <td>{{ obj.update_at }}</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-info btn-sm" href=""><i
-                                                    class="fa fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-sm"
-                                               href="{% url 'tag_delete' obj.pk %}"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        {% else %}
-                            <h2>Tag not added yet</h2>
-                        {% endif %}
-                    </div>
-                    <!-- /.box-body -->
+
+                    {% include 'tag/tag_list_component.html' %}
+
                     <div class="box-footer clearfix">
                         {% include 'common/pagination.html' %}
                     </div>

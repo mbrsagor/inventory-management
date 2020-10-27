@@ -1,42 +1,42 @@
 <div class="box-body">
-    {% if inventory %}
+    {% if category %}
         <table class="table table-bordered">
             <tbody>
             <tr>
-                <th>Inventory Name</th>
-                <th>Category</th>
-                <th>Stock</th>
-                <th>Purchase price</th>
-                <th>Sales price</th>
-                <th>Promotional price</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th class="text-center">Actions</th>
+                <th>Sub Category</th>
+                <th>Parent Category</th>
+                <th>Is Active</th>
+                <th>Created At</th>
+                <th>Image</th>
+                <th class="text-center">Action</th>
             </tr>
-            {% for obj in inventory %}
+            {% for cat in category %}
                 <tr>
-                    <td>{{ obj.name|truncatechars:55 }}</td>
-                    <td>{{ obj.category_name }}</td>
-                    <td>{{ obj.current_stock }} PCS</td>
-                    <td>BDT {{ obj.purchase_price }}</td>
-                    <td>BDT {{ obj.sales_price }}</td>
-                    <td>BDT {{ obj.promotional_price }}</td>
-                    <td>{{ obj.created_at|time:'g:i:s A' }}</td>
-                    <td>{{ obj.update_at|time:'g:i:s A' }}</td>
+                    <td>{{ cat.name }}</td>
+                    <td>{% if not cat.parent %} <-> {% else %} {{ cat.parent }} {% endif %}</td>
+                    <td>{% if cat.is_active == 1 %}
+                        <span class="badge bg-green">Active</span> {% else %}
+                        <span class="badge bg-red">Deactivated</span> {% endif %}</td>
+                    <td>{{ cat.created_at }}</td>
+                    <td>
+                        {% if not cat.category_image %}
+                            <div class="image_not_found"><i class="fa fa-desktop"></i></div>
+                        {% else %}
+                            <img width="40px" height="15" src="/media/{{ cat.category_image }}"
+                                 alt="category image">
+                        {% endif %}
+                    </td>
                     <td class="text-center">
-                        <a class="btn btn-info btn-sm" href="{% url 'inventory_detail' obj.pk %}"><i
-                                class="fa fa-eye"></i></a>
-                        <a class="btn btn-info btn-sm" href="{% url 'inventory_update' obj.pk %}"><i
+                        <a class="btn btn-info btn-sm" href="{% url 'category_update' cat.id %}"><i
                                 class="fa fa-pencil"></i></a>
-                        <a class="btn btn-danger btn-sm"
-                           href="{% url 'inventory_delete' obj.pk %}"><i class="fa fa-trash"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'category_delete' cat.id %}"><i
+                                class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <h2>No Inventory added yet</h2>
+        <h2>Category not added yet</h2>
     {% endif %}
 </div>
-<!-- /.box-body -->
