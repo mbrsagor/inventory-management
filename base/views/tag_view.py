@@ -12,7 +12,7 @@ class CreateListTagView(SuccessMessageMixin, CreateView, ListView):
     template_name = 'tag/tag_list.html'
     model = Tag
     form_class = TagForm
-    success_message = "Category successfully created!"
+    success_message = "Tag has been successfully created!"
     success_url = '/tag/'
     context_object_name = 'tag'
     paginate_by = 10

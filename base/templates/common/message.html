@@ -1,6 +1,6 @@
-{% if messages %}
-    <div class="category_message">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="message_framework">
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
             {% for m in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ m }}</li>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -8,5 +8,6 @@
                 </button>
             {% endfor %}
         </div>
-    </div>
-{% endif %}
+    {% endif %}
+</div>
+

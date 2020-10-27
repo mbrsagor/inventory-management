@@ -116,6 +116,8 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Django Message Framework
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
 MESSAGE_TAGS = {
     messages.INFO: 'SUCCESS',
     messages.ERROR: 'ERROR',
