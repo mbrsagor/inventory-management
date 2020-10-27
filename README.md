@@ -37,7 +37,7 @@ Postgres.app, click the Postgres.app icon in your toolbar and select "Open psql"
 ```
 create database "inventory";
 create user "macair";
-ALTER ROLE "inventory" WITH PASSWORD 'inventory-dev';
+ALTER ROLE "inventory" WITH PASSWORD 'inventory';
 ALTER USER macair CREATEDB;
 CREATE EXTENSION postgis;
 ```
