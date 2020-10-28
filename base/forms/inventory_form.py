@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, Select, FileInput, NumberInput, Textarea
+from django.forms import TextInput, Select, FileInput, NumberInput, Textarea, SelectMultiple
 
 from base.models.inventory import Inventory
 
@@ -11,7 +11,7 @@ class InventoryForm(forms.ModelForm):
         widgets = {
             'name': TextInput(attrs={'class': 'form-control', 'id': 'name', 'placeholder': 'Enter Inventory Name'}),
             'category_name': Select(attrs={'class': 'form-control', 'id': 'category_name'}),
-            'tags': Select(attrs={'class': 'form-control select2', 'id': 'tags', 'multiple': 'multiple'}),
+            'tags': SelectMultiple(attrs={'class': 'form-control select2', 'id': 'tags', 'multiple': 'multiple'}),
             'short_description': TextInput(
                 attrs={'class': 'form-control', 'id': 'short_description',
                        'placeholder': 'Enter inventory shot description'}),

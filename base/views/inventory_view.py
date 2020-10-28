@@ -15,6 +15,13 @@ class CreateInventoryView(SuccessMessageMixin, CreateView):
     success_message = "Inventory successfully created!"
     success_url = '/create-inventory/'
 
+    # def form_valid(self, form):
+    #     object = form.save(commit=False)
+    #     for tag in self.request.POST.getlist('tags'):
+    #         object.tags.add(tag)
+    #     object.save()
+    #     return HttpResponseRedirect(self.get_success_url())
+
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class InventoryListView(ListView):
