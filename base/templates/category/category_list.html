@@ -18,7 +18,17 @@
             <div class="col-lg-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Category List</h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="box-title">Category List</h3>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <a title="Create category" data-toggle="tooltip" data-placement="left"
+                                   class="btn btn-info btn-sm" href="{% url 'create_category' %}">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
                     {% include 'category/category_list_component.html' %}
