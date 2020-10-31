@@ -12,7 +12,16 @@
                 <div class="box box-primary">
                     {% include 'common/message.html' %}
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add New Inventory</h3>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="box-title">Add New Inventory</h3>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <a title="Inventory List" data-toggle="tooltip" data-placement="left" class="btn btn-info btn-sm" href="{% url 'inventory_list' %}">
+                                    <i class="fa fa-list"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="box-body">
                         <form method="POST" enctype="multipart/form-data">
