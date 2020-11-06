@@ -1,0 +1,40 @@
+<div class="box-body">
+    {% if product %}
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Category</th>
+                <th>Price</th>
+                <th>Created At</th>
+                <th>Image</th>
+                <th class="text-center">Action</th>
+            </tr>
+            {% for obj in product %}
+                <tr>
+                    <td>{{ obj.title }}</td>
+                    <td>{{ obj.product_category }}</td>
+                    <td>{{ obj.price }}</td>
+                    <td>{{ obj.created_at }}</td>
+                    <td>
+                        {% if not obj.product_image %}
+                            <div class="image_not_found"><i class="fa fa-desktop"></i></div>
+                        {% else %}
+                            <img width="40px" height="15" src="/media/{{ obj.product_image }}"
+                                 alt="category image">
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-info btn-sm" href="#"><i
+                                class="fa fa-pencil"></i></a>
+                        <a class="btn btn-danger btn-sm" href="#"><i
+                                class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>Product not added yet</h2>
+    {% endif %}
+</div>

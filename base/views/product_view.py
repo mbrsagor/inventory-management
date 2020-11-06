@@ -14,3 +14,10 @@ class CreateProductView(SuccessMessageMixin, CreateView):
     form_class = ProductForm
     success_message = 'Product has been created'
     success_url = '/create-product/'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class ProductListView(ListView):
+    template_name = 'product/list_of_product.html'
+    model = Product
+    context_object_name = 'product'
