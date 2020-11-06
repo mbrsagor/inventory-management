@@ -1,9 +1,10 @@
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
 from base.models.product import Product
+from base.models.category import Category
 from base.forms.product_form import ProductForm
 
 
@@ -21,3 +22,10 @@ class ProductListView(ListView):
     template_name = 'product/list_of_product.html'
     model = Product
     context_object_name = 'product'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class CategoryByProduct(ListView):
+    template_name = 'product/category_by_product.html'
+    model = Category
+    context_object_name = 'category_by_product'
