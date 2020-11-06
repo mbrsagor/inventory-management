@@ -29,3 +29,10 @@ class CategoryByProduct(ListView):
     template_name = 'product/category_by_product.html'
     model = Category
     context_object_name = 'category_by_product'
+
+
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class ProductGridView(ListView):
+    template_name = 'product/product_grid_view.html'
+    model = Product
+    context_object_name = 'product'
