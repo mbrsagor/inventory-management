@@ -80,5 +80,6 @@ def cart_updated(request, id):
     return redirect('bulling_detail')
 
 
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
 class POSView(TemplateView):
     template_name = 'product/pos.html'
