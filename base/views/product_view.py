@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
@@ -79,3 +79,6 @@ def cart_updated(request, id):
     cart.add(product=product, quantity=number, update_quantity=True)
     return redirect('bulling_detail')
 
+
+class POSView(TemplateView):
+    template_name = 'product/pos.html'
