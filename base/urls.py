@@ -5,7 +5,8 @@ from base.views.category_view import CategoryCreateView, CategoryListView, Categ
 from base.views.inventory_view import CreateInventoryView, InventoryListView, InventoryDetailView, \
     InventoryUpdateView, InventoryDeleteView
 from base.views.tag_view import CreateListTagView, TagDeleteView
-from base.views.product_view import CreateProductView, ProductListView, CategoryByProduct, ProductGridView
+from base.views.product_view import CreateProductView, ProductListView, CategoryByProduct, \
+    ProductGridView, cart_detail, cart_add
 
 urlpatterns = [
     path('', UserLoginView.as_view(), name='login'),
@@ -26,4 +27,6 @@ urlpatterns = [
     path('product-list/', ProductListView.as_view(), name='product_list'),
     path('category-list-page/', CategoryByProduct.as_view(), name='category_by_product'),
     path('product-grid-view/<int:id>/', ProductGridView.as_view(), name='product_grid_view'),
+    path('cart/', cart_detail, name='cart_detail'),
+    path('cart/<int:id>/', cart_add, name='cart_add'),
 ]

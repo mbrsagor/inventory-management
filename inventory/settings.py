@@ -126,3 +126,6 @@ MESSAGE_TAGS = {
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
+
+
+CART_SESSION_ID = 'cart'

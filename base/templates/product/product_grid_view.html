@@ -27,11 +27,11 @@
                     <div class="col-lg-2">
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><a href="">{{ obj.title }}</a></h3>
+                                <h3 class="box-title"><a href="{% url 'cart_add' obj.id %}">{{ obj.title }}</a></h3>
                             </div>
                             <div class="box-body">
                                 <div class="category_by_product">
-                                    <a href="">
+                                    <a href="{% url 'cart_add' obj.id %}">
                                         <img src="{{ obj.product_image.url }}" alt="Product Picture">
                                     </a>
                                 </div>
