@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %} Bulling page {% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="shopping-cart">
+                        <div class="shopping-cart-table ">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="cart-description item">Image</th>
+                                        <th class="cart-product-name item">Product Name</th>
+                                        <th class="cart-qty item">Quantity</th>
+                                        <th class="cart-sub-total item">Price</th>
+                                        <th class="cart-romove item">Remove</th>
+                                    </tr>
+                                    </thead><!-- /thead -->
+                                    <tbody>
+
+                                    {% for item in cart %}
+                                        {% with product=item.product %}
+                                            <tr>
+                                                <td class="cart-image">
+                                                    <img width="90px" height="50px"
+                                                         src="{{ product.product_image.url }}" alt="">
+                                                </td>
+                                                <td class="cart-product-name-info">
+                                                    <h4 class='cart-product-description'>{{ product.name }}</h4>
+                                                    <div class="cart-product-info">
+                                                        <span class="product-color">{{ product.title }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="cart-product-quantity">
+                                                    <form action="{% url 'cart_updated' product.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="number" name="number"
+                                                               value="{{ item.update_quantity_form.quantity }}" min="1">
+                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                            <i class="fa fa-upload"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td class="cart-product-sub-total"><span
+                                                        class="cart-sub-total-price">৳{{ product.price }}</span>
+                                                </td>
+                                                <td class="romove-item"><a href="{% url 'cart_remove' product.id %}"
+                                                                           title="cancel" class="icon"><i
+                                                        class="fa fa-trash-o"></i></a></td>
+                                            </tr>
+                                        {% endwith %}
+                                    {% endfor %}
+                                    </tbody><!-- /tbody -->
+                                </table><!-- /table -->
+                                <div class="text-right">
+                                    <p style="margin-right: 50px"> Total Billing<span class="inner-left-md">৳{{ cart.get_total_price }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
