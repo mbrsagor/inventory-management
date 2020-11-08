@@ -7,7 +7,7 @@ from base.models.product import Product
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class POSView(TemplateView):
-    template_name = 'product/pos.html'
+    template_name = 'pos/pos.html'
 
     def get_context_data(self, **kwargs):
         context = super(POSView, self).get_context_data(**kwargs)

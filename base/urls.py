@@ -33,5 +33,5 @@ urlpatterns = [
     path('cart/<int:id>/', cart_add, name='cart_add'),
     path('cart-update/<int:id>/', cart_updated, name='cart_updated'),
     path('cart-remove/<int:id>/', cart_remove, name='cart_remove'),
-    path('pos/', POSView.as_view(), name='pos'),
+    path('pos/', POSView.as_view(), name='pos_view'),
 ]

@@ -28,7 +28,7 @@
                                     {% if cosmetic %}
                                         {% for obj in cosmetic %}
                                             <div class="col-lg-3">
-                                                <a href="">
+                                                <a href="{% url 'cart_add' obj.id %}">
                                                     <img src="{{ obj.product_image.url }}" alt="">
                                                     <h5 class="box-title">{{ obj.title }}</h5>
                                                 </a>
