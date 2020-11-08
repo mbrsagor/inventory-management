@@ -15,6 +15,9 @@ class POSView(View):
         food = Product.objects.filter(product_category__id=6)
         cart = Cart(request)
 
+        for item in cart:
+            item['update_quantity_form'] = {'quantity': item['quantity'], 'update': True}
+
         context = {
             'cosmetic': cosmetic,
             'tech': tech,
@@ -42,17 +45,9 @@ def cart_remove(request, id):
     return redirect('pos_view')
 
 
-# Shopping Cart views
-def bulling_detail(request):
-    cart = Cart(request)
-    for item in cart:
-        item['update_quantity_form'] = {'quantity': item['quantity'], 'update': True}
-    template_name = 'pos/bulling.html'
-    return render(request, template_name, {'cart': cart})
-
-
 @require_POST
 def cart_updated(request, id):
+    number = None
     cart = Cart(request)
     if request.method == 'POST':
         number = int(request.POST.get('number'))

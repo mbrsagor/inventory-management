@@ -13,7 +13,7 @@
     <div class="content">
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#Category0" data-toggle="tab">Cosmetic</a></li>
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="box box-primary">
                     <div class="box-body box-profile">
                         <div class="box-header">
@@ -114,40 +114,46 @@
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <table class="table table-striped">
+                                    <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Code</th>
-                                        <th style="width: 40px">Price</th>
-                                        <th style="width: 10px">#</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Del</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
                                     <tr>
-                                        <td>Update software</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-red">55%</span></td>
-                                        <td>1</td>
-                                    </tr>
+                                        {% for item in cart %}
+                                            {% with product=item.product %}
+                                                <td>{{ product.title }}</td>
+                                                <td>{{ product.price }}</td>
+                                                <td>
+                                                    <form action="{% url 'cart_updated' product.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input style="width: 30px" type="number" name="number"
+                                                               value="{{ item.update_quantity_form.quantity }}" min="1">
+                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'cart_remove' product.id %}"
+                                                       title="cancel" class="icon"><i
+                                                            class="fa fa-trash-o"></i></a>
+                                                </td>
+                                                </tr>
+                                            {% endwith %}
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
-                                <p>
-                                    {% with totail_items=cart|length %}
-                                        {% if cart|length > 0 %}
-                                            <span class="total-price"> <span class="sign">৳</span><span
-                                                    class="value">{{ cart.get_total_price }}</span> </span>
-                                        {% else %}
-                                            0 items/ ৳0.00
-                                        {% endif %}
-                                    {% endwith %}
-                                </p>
                             </div>
-                            <!-- /.box-body -->
                         </div>
                     </div>
+                <div class="box-footer text-right"><p>Net Total: ৳{{ cart.get_total_price }}</p></div>
                 </div>
             </div>
-
         </div>
     </div>
 
