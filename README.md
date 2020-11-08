@@ -1,5 +1,5 @@
-# Inventory Management System
-> The web application is simple inventory management system web-app.
+# POS = Point of sales
+> The web application is simple Point of sales and inventory management system web-app.
  #### Features:
  Configuration:
  -  Inventory Categories
@@ -16,6 +16,11 @@
  - Inventory purchase price
  - Inventory sales price
  - Inventory promotional price
+ 
+ POS:
+ - Product Sales
+ - List of sale record
+ - Invoice 
 
 ## Setup & dependencies
 
