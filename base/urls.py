@@ -6,7 +6,9 @@ from base.views.inventory_view import CreateInventoryView, InventoryListView, In
     InventoryUpdateView, InventoryDeleteView
 from base.views.tag_view import CreateListTagView, TagDeleteView
 from base.views.product_view import CreateProductView, ProductListView, CategoryByProduct, \
-    ProductGridView, bulling_detail, cart_add, cart_updated, cart_remove, POSView
+    ProductGridView, bulling_detail, cart_add, cart_updated, cart_remove
+
+from base.views.pos import POSView
 
 urlpatterns = [
     path('', UserLoginView.as_view(), name='login'),

@@ -4,25 +4,91 @@
 
 {% block content %}
 
+    <style type="text/css">
+        .item_list img {
+            width: 100%;
+        }
+    </style>
+
     <div class="content">
         <div class="row">
 
             <div class="col-md-8">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#Category1" data-toggle="tab">Category 1</a></li>
-                        <li><a href="#category2" data-toggle="tab">category 2</a></li>
-                        <li><a href="#category3" data-toggle="tab">category 3</a></li>
+                        <li class="active"><a href="#Category0" data-toggle="tab">Cosmetic</a></li>
+                        <li><a href="#Category1" data-toggle="tab">Tech</a></li>
+                        <li><a href="#category2" data-toggle="tab">Food</a></li>
+                        <li><a href="#category3" data-toggle="tab">Laptop</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="active tab-pane" id="Category1">
-                            <h2>Category One</h2>
+                    <div class="active tab-pane" id="Category0">
+                            <div class="item_list">
+                                <div class="row">
+                                    {% if cosmetic %}
+                                        {% for obj in cosmetic %}
+                                            <div class="col-lg-3">
+                                                <a href="">
+                                                    <img src="{{ obj.product_image.url }}" alt="">
+                                                    <h5 class="box-title">{{ obj.title }}</h5>
+                                                </a>
+                                                <p class="box-comment">$ {{ obj.price }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="Category1">
+                            <div class="item_list">
+                                <div class="row">
+                                    {% if tech %}
+                                        {% for obj in tech %}
+                                            <div class="col-lg-3">
+                                                <a href="">
+                                                    <img src="{{ obj.product_image.url }}" alt="">
+                                                    <h5 class="box-title">{{ obj.title }}</h5>
+                                                </a>
+                                                <p class="box-comment">$ {{ obj.price }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="category2">
-                            <h2>Category two</h2>
+                            <div class="item_list">
+                                <div class="row">
+                                    {% if food %}
+                                        {% for obj in food %}
+                                            <div class="col-lg-3">
+                                                <a href="">
+                                                    <img src="{{ obj.product_image.url }}" alt="">
+                                                    <h5 class="box-title">{{ obj.title }}</h5>
+                                                </a>
+                                                <p class="box-comment">$ {{ obj.price }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="category3">
-                            <h2>Category three</h2>
+                            <div class="item_list">
+                                <div class="row">
+                                    {% if laptop %}
+                                        {% for obj in laptop %}
+                                            <div class="col-lg-3">
+                                                <a href="">
+                                                    <img src="{{ obj.product_image.url }}" alt="">
+                                                    <h5 class="box-title">{{ obj.title }}</h5>
+                                                </a>
+                                                <p class="box-comment">$ {{ obj.price }}</p>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -31,7 +97,43 @@
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-
+                        <div class="box-header">
+                            <h4 class="box-title">12:00 PM</h4>
+                        </div>
+                        <div class="box">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 class="box-title">Default Customer</h3>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <h3 class="box-title"><a href="#"><i class="fa fa-plus"></i></a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Code</th>
+                                        <th style="width: 40px">Price</th>
+                                        <th style="width: 10px">#</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Update software</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-red">55%</span></td>
+                                        <td>1</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
                     </div>
                 </div>
             </div>
