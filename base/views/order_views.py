@@ -1,4 +1,4 @@
-from base.models.order import OrderItem, Order
+from base.models.order import OrderItem
 from django.shortcuts import render, redirect
 from base.forms.order_form import OrderForm
 from base.addcart import Cart
@@ -25,7 +25,8 @@ def bulling_information_view(request):
     return render(request, 'pos/bulling_information.html', {'form': form, 'cart': cart})
 
 
-class OrderView(ListView):
+class OrderItemView(ListView):
     template_name = 'pos/order_list.html'
-    model = Order
+    model = OrderItem
     context_object_name = 'order'
+    paginate_by = 15

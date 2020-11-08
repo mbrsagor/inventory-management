@@ -4,6 +4,7 @@ from base.models.category import Category
 from base.models.tag import Tag
 from base.models.inventory import Inventory
 from base.models.product import Product
+from base.models.order import Order, OrderItem
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -30,3 +31,5 @@ class InventoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Product)
+admin.site.register(Order)
+admin.site.register(OrderItem)

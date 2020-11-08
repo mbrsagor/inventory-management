@@ -12,7 +12,7 @@ class Order(BaseEntity):
     address = models.CharField(max_length=150, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.id}'
+        return f'{self.id} {self.full_name}'
 
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
