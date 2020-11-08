@@ -1,6 +1,4 @@
-from django.views.generic import TemplateView
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+from django.views import View
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 
@@ -8,17 +6,24 @@ from base.models.product import Product
 from base.addcart import Cart
 
 
-@method_decorator(login_required(login_url='/login/'), name='dispatch')
-class POSView(TemplateView):
-    template_name = 'pos/pos.html'
+class POSView(View):
 
-    def get_context_data(self, **kwargs):
-        context = super(POSView, self).get_context_data(**kwargs)
-        context['cosmetic'] = Product.objects.filter(product_category__id=1)
-        context['tech'] = Product.objects.filter(product_category__id=3)
-        context['laptop'] = Product.objects.filter(product_category__id=4)
-        context['food'] = Product.objects.filter(product_category__id=6)
-        return context
+    def get(self, request):
+        cosmetic = Product.objects.filter(product_category__id=1)
+        tech = Product.objects.filter(product_category__id=3)
+        laptop = Product.objects.filter(product_category__id=4)
+        food = Product.objects.filter(product_category__id=6)
+        cart = Cart(request)
+
+        context = {
+            'cosmetic': cosmetic,
+            'tech': tech,
+            'laptop': laptop,
+            'food': food,
+            'cart': cart
+        }
+        template_name = 'pos/pos.html'
+        return render(request, template_name, context)
 
 
 # Add to cart views

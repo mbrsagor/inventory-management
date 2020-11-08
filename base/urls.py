@@ -8,7 +8,7 @@ from base.views.tag_view import CreateListTagView, TagDeleteView
 from base.views.product_view import CreateProductView, ProductListView, CategoryByProduct, \
     ProductGridView
 
-from base.views.pos import POSView, bulling_detail, cart_add, cart_updated, cart_remove
+from base.views.pos_view import POSView, bulling_detail, cart_add, cart_updated, cart_remove
 
 urlpatterns = [
     path('', UserLoginView.as_view(), name='login'),

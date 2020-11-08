@@ -22,7 +22,7 @@
                         <li><a href="#category3" data-toggle="tab">Laptop</a></li>
                     </ul>
                     <div class="tab-content">
-                    <div class="active tab-pane" id="Category0">
+                        <div class="active tab-pane" id="Category0">
                             <div class="item_list">
                                 <div class="row">
                                     {% if cosmetic %}
@@ -45,7 +45,7 @@
                                     {% if tech %}
                                         {% for obj in tech %}
                                             <div class="col-lg-3">
-                                                <a href="">
+                                                <a href="{% url 'cart_add' obj.id %}">
                                                     <img src="{{ obj.product_image.url }}" alt="">
                                                     <h5 class="box-title">{{ obj.title }}</h5>
                                                 </a>
@@ -62,7 +62,7 @@
                                     {% if food %}
                                         {% for obj in food %}
                                             <div class="col-lg-3">
-                                                <a href="">
+                                                <a href="{% url 'cart_add' obj.id %}">
                                                     <img src="{{ obj.product_image.url }}" alt="">
                                                     <h5 class="box-title">{{ obj.title }}</h5>
                                                 </a>
@@ -79,7 +79,7 @@
                                     {% if laptop %}
                                         {% for obj in laptop %}
                                             <div class="col-lg-3">
-                                                <a href="">
+                                                <a href="{% url 'cart_add' obj.id %}">
                                                     <img src="{{ obj.product_image.url }}" alt="">
                                                     <h5 class="box-title">{{ obj.title }}</h5>
                                                 </a>
@@ -131,6 +131,16 @@
                                         <td>1</td>
                                     </tr>
                                 </table>
+                                <p>
+                                    {% with totail_items=cart|length %}
+                                        {% if cart|length > 0 %}
+                                            <span class="total-price"> <span class="sign">৳</span><span
+                                                    class="value">{{ cart.get_total_price }}</span> </span>
+                                        {% else %}
+                                            0 items/ ৳0.00
+                                        {% endif %}
+                                    {% endwith %}
+                                </p>
                             </div>
                             <!-- /.box-body -->
                         </div>
