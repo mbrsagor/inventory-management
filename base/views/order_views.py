@@ -1,11 +1,10 @@
-from base.models.order import OrderItem, Order
-from django.shortcuts import render, redirect, get_object_or_404
+from base.models.order import OrderItem
+from django.shortcuts import render, redirect
 from base.forms.order_form import OrderForm
 from base.addcart import Cart
 
 
-# Checkout views
-def checkOutViews(request):
+def bulling_information_view(request):
     cart = Cart(request)
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -13,12 +12,13 @@ def checkOutViews(request):
             order = form.save()
             for item in cart:
                 OrderItem.objects.create(
-                    order=order,
-                    product=item['product'],
+                    orderItem=order,
+                    products=item['product'],
                     price=item['price'],
                     quantity=item['quantity']
                 )
             cart.clear()
+        return redirect('pos_view')
     else:
         form = OrderForm()
-    return render(request, 'pos/checkout.html', {'form': form, 'cart': cart})
+    return render(request, 'pos/bulling_information.html', {'form': form, 'cart': cart})

@@ -151,7 +151,16 @@
                             </div>
                         </div>
                     </div>
-                <div class="box-footer text-right"><p>Net Total: ৳{{ cart.get_total_price }}</p></div>
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="btn btn-primary" href="{% url 'bulling_information' %}">Pay</a>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p>Net Total: ৳{{ cart.get_total_price }}</p>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
