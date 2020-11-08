@@ -1,7 +1,8 @@
-from base.models.order import OrderItem
+from base.models.order import OrderItem, Order
 from django.shortcuts import render, redirect
 from base.forms.order_form import OrderForm
 from base.addcart import Cart
+from django.views.generic import ListView
 
 
 def bulling_information_view(request):
@@ -22,3 +23,9 @@ def bulling_information_view(request):
     else:
         form = OrderForm()
     return render(request, 'pos/bulling_information.html', {'form': form, 'cart': cart})
+
+
+class OrderView(ListView):
+    template_name = 'pos/order_list.html'
+    model = Order
+    context_object_name = 'order'

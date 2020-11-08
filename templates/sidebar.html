@@ -62,12 +62,17 @@
                 <li><a href="{% url 'product_list' %}"><i class="fa fa-circle-o"></i> All Product</a></li>
             </ul>
         </li>
-        <li>
-            <a href="{% url 'pos_view' %}">
-                <i class="fa fa-microphone"></i> <span>POS</span>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-first-order"></i>
+                <span>POS</span>
                 <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
+            <ul class="treeview-menu">
+                <li><a href="{% url 'order_information' %}"><i class="fa fa-circle-o"></i> Order Record</a></li>
+            </ul>
         </li>
         <li class="treeview">
             <a href="#">
