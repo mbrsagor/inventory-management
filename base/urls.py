@@ -8,6 +8,7 @@ from base.views.tag_view import CreateListTagView, TagDeleteView
 from base.views.product_view import CreateProductView, ProductListView
 
 from base.views.pos_view import POSView, cart_add, cart_updated, cart_remove
+from base.views.order_views import checkOutViews
 
 urlpatterns = [
     path('', UserLoginView.as_view(), name='login'),
@@ -30,4 +31,6 @@ urlpatterns = [
     path('cart-update/<int:id>/', cart_updated, name='cart_updated'),
     path('cart-remove/<int:id>/', cart_remove, name='cart_remove'),
     path('pos/', POSView.as_view(), name='pos_view'),
+    path('checkout/', checkOutViews, name='checkout_view'),
+
 ]
