@@ -5,8 +5,7 @@ from base.views.category_view import CategoryCreateView, CategoryListView, Categ
 from base.views.inventory_view import CreateInventoryView, InventoryListView, InventoryDetailView, \
     InventoryUpdateView, InventoryDeleteView
 from base.views.tag_view import CreateListTagView, TagDeleteView
-from base.views.product_view import CreateProductView, ProductListView, CategoryByProduct, \
-    ProductGridView
+from base.views.product_view import CreateProductView, ProductListView
 
 from base.views.pos_view import POSView, cart_add, cart_updated, cart_remove
 
@@ -27,8 +26,6 @@ urlpatterns = [
     path('tag/<pk>/', TagDeleteView.as_view(), name='tag_delete'),
     path('create-product/', CreateProductView.as_view(), name='product_create'),
     path('product-list/', ProductListView.as_view(), name='product_list'),
-    path('category-list-page/', CategoryByProduct.as_view(), name='category_by_product'),
-    path('product-grid-view/<int:id>/', ProductGridView.as_view(), name='product_grid_view'),
     path('cart/<int:id>/', cart_add, name='cart_add'),
     path('cart-update/<int:id>/', cart_updated, name='cart_updated'),
     path('cart-remove/<int:id>/', cart_remove, name='cart_remove'),
