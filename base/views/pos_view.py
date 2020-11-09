@@ -45,6 +45,7 @@ def cart_remove(request, id):
     return redirect('pos_view')
 
 
+# update Shopping Cart views
 @require_POST
 def cart_updated(request, id):
     number = None
