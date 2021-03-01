@@ -62,7 +62,7 @@ Assuming you've cloned the repository, open Terminal and `cd ~/your/path/to/inve
 Create a python virtual environment:
 
 ```bash
-pyvenv-3.8 env
+virtualenv venv --python=python3.8
 ```
 
 Activate it:
